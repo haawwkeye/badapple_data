@@ -2,7 +2,7 @@
   "name": "badappledata",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./Node/Main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,9 +20,7 @@
   "dependencies": {
     "encoder": "^0.2.4",
     "json": "^11.0.0",
-    "node-python-opencv": "^1.0.4",
     "numjs": "^0.16.1",
-    "opencv.js": "^1.2.1",
     "python-shell": "^3.0.1"
   }
 }
