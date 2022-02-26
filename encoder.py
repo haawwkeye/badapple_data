@@ -85,10 +85,13 @@ def encode(filmName,videoName,resolutionMulti,fpsMulti,packetSize):
             frame = rescaleFrame(frame,resolutionMulti)
 
             row,col,_ = frame.shape
+            
 
             colTable = []
 
             for colI in range(col):
+                
+                lastColor = [-1,-1,-1]
 
                 rowTable = []
 
@@ -98,8 +101,13 @@ def encode(filmName,videoName,resolutionMulti,fpsMulti,packetSize):
                     colorData = list(colorData)
           
                     for i,colorValue in enumerate(colorData): colorData[i] = np.int(colorValue)# allows json to sterilise
-
-                    rowTable.append([colorData[2],colorData[1],colorData[0]] ) 
+                
+                    if colorData[2] == lastColor[0] and colorData[1] == lastColor[1] and colorData[0] == lastColor[2]:
+                        rowTable[-1][3] = rowTable[-1][3] + 1
+                    else:
+                        lastColor = [colorData[2],colorData[1],colorData[0]]
+                        
+                        rowTable.append([colorData[2],colorData[1],colorData[0],1] ) 
 
                 colTable.append(rowTable)
 
